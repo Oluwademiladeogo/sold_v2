@@ -1,12 +1,12 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const app = express();
+app.use(cors());
+app.use(express.json());
 //using classes and controllers soon
-app.get("/", (req, res) => {
-  res.send("awaiting");
-});
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  if (process.env.NODE_ENV) console.log(`server listening on port ${port}`);
-  console.log("done");
-});
+app.use("/", (require("./routes/index")))
+app.use("/login", require("./routes/login"))
+app.use("/cart", require("./routes/cart"))
+
+module.exports = app
