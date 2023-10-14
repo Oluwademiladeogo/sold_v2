@@ -1,5 +1,6 @@
 import { react, useState } from "react";
 import "./Navbar.css";
+import FontLinks from "../FontLinks/FontLinks";
 const Navbar = (props) => {
   // const [token, setToken] = useState("")
   // setToken(props.token)
@@ -9,30 +10,7 @@ const Navbar = (props) => {
   };
   return (
     <>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="true"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-        rel="stylesheet"
-      />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="true"
-      />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-        rel="stylesheet"
-      />
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      />
+      <FontLinks />
       <div className="nav ">
         {token === "true" ? (
           <div>
@@ -40,13 +18,8 @@ const Navbar = (props) => {
             <a href="#" className="nav__link">
               HOME
             </a>
-            <a href="#" className="nav__link">
-              ABOUTUS
-            </a>
-            <a href="#" className="nav__link">
-              CART
-            </a>
-            <a className="nav__link">QUALITY SERVICES AND DELIVERY</a>
+
+            {/* <a className="nav__link">QUALITY SERVICES AND DELIVERY</a> */}
             <input
               type="text"
               name="search"
@@ -58,16 +31,22 @@ const Navbar = (props) => {
               className="nav__button"
               onClick={buttonClickHandler}
             >
-              <i className="fa fa-search" />
+              {/* <i className="fa fa-search" /> */}
             </button>
             <a href="#" className="nav__link">
-              DASHBOARD
+              CART
+            </a>
+            <i class="fa-regular fa-user fa-2xs"></i>
+            <a href="#" className="nav__link">
+              CONTACT
+            </a>
+            <a href="#" className="nav__link">
+            <i className="fa-solid fa-user-lock fa-2xs"></i>
             </a>
             <a href="#" className="nav__link">
               LOGOUT
             </a>
           </div>
-          
         ) : (
           //
           //
@@ -94,7 +73,7 @@ const Navbar = (props) => {
             <a href="#" className="nav__link">
               CART
             </a>
-            <a className="nav__link">QUALITY SERVICES AND DELIVERY</a>
+            {/* <a className="nav__link">QUALITY SERVICES AND DELIVERY</a> */}
             <input
               type="text"
               name="search"

@@ -1,20 +1,18 @@
-
-
 body {
   margin: 0px;
 }
 .nav {
   width: 100%;
-  height: 50px;
+  height:3.3rem;
   background-color: #e3f2fd;
   -webkit-text-size-adjust: 100%;
 }
 .nav__link {
   position: relative;
   top: 0.9rem;
-  padding: 10px;
+  /* padding: 10px; */
   text-decoration: none;
-  margin-left: 2rem;
+  margin-left: 9%;
   font-size: 1.1rem;
   font-weight: 400;
   color: #666666;
@@ -30,7 +28,7 @@ body {
   color: #3d3d3d;
 }
 .nav__link__sold {
-  margin: 1.7rem;
+  margin: 1rem;
   position: relative;
   top: 0.9rem;
   font-size: 1.2rem;
@@ -55,4 +53,44 @@ body {
   position: absolute;
   margin-top: 1rem;
   margin-right: 2rem;
+}
+.grid {
+  /* position: relative; */
+  display: grid;
+  /* grid-gap: 10px; */
+}
+
+/* you can remove the lines beside and make it a little padded or largin right because of small devices */
+@media only screen and (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
