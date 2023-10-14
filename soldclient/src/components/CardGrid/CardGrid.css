@@ -1,41 +1,42 @@
 .grid {
-    /* position: relative; */
-    display: grid;
-    /* grid-gap: 10px; */
+  /* position: relative; */
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  /* grid-gap: 10px; */
+}
+
+/* you can remove the lines beside and make it a little padded or largin right because of small devices */
+@media only screen and (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  
-  /* you can remove the lines beside and make it a little padded or largin right because of small devices */
-  @media only screen and (max-width: 600px) {
-    .grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px) {
-    .grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
   }
-  
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px) {
-    .grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
   }
-  
-  /* Large devices (laptops/desktops, 992px and up) */
-  @media only screen and (min-width: 992px) {
-    .grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
   }
-  
-  /* Extra large devices (large laptops and desktops, 1200px and up) */
-  @media only screen and (min-width: 1200px) {
-    .grid {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
+}
