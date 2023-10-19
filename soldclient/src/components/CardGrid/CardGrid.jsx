@@ -29,8 +29,10 @@ const CardGrid = (props) => {
     fetchData();
   }, []);
   const ErrorMessage = ({ message }) => {
-    return <div className="error">message</div>;
+    return <div className="error">{message}</div>;
   };
+
+
   return (
     <>
       <div className="grid">
@@ -39,12 +41,12 @@ const CardGrid = (props) => {
           !error &&
           items.map((item) => (
             <Card
-              key={item.id}
-              card_img={item.card_img}
-              card_img_alt={item.card_img_alt}
-              name={item.name}
-              description={item.description}
-              price={item.price}
+              key={item.product_id}
+              card_img={item.product_img_url}
+              card_img_alt={item.product_card_img_alt}
+              name={item.product_name}
+              description={item.product_description}
+              price={item.product_price}
             ></Card>
           ))}
         {error && <ErrorMessage message={error} />}
