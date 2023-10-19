@@ -18,7 +18,6 @@ const Navbar = (props) => {
             <a href="#" className="nav__link">
               HOME
             </a>
-
             {/* <a className="nav__link">QUALITY SERVICES AND DELIVERY</a> */}
             <input
               type="text"
@@ -36,7 +35,7 @@ const Navbar = (props) => {
             <a href="#" className="nav__link">
               CART
             </a>
-            <i class="fa-regular fa-user fa-2xs"></i>
+            <i className="fa-regular fa-user fa-2xs"></i>
             <a href="#" className="nav__link">
               CONTACT
             </a>
