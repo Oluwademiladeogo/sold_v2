@@ -10,7 +10,7 @@ function App() {
   return (
     <>
     {/* <Login/> */}
-      <Navbar token="true" />
+      {/* <Navbar token="true" /> */}
       <CardGrid />
     </>
   );
