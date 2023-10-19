@@ -21,7 +21,7 @@ const FontLinks = () => {
         href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
         rel="stylesheet"
       />
-      <script src="https://kit.fontawesome.com/86988e59cc.js" crossorigin="anonymous"></script>
+      <script src="https://kit.fontawesome.com/86988e59cc.js" crossOrigin="anonymous"></script>
 
     </>
   );
