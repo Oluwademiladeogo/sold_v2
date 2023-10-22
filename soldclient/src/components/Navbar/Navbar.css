@@ -1,96 +1,77 @@
-body {
-  margin: 0px;
+.active {
+  background-color: #1b4ed8;
 }
-.nav {
-  width: 100%;
-  height:3.3rem;
-  background-color: #e3f2fd;
-  -webkit-text-size-adjust: 100%;
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f172a;
+  position: sticky;
+  top: 0;
+  margin-bottom: 1rem;
 }
-.nav__link {
-  position: relative;
-  top: 0.9rem;
-  /* padding: 10px; */
-  text-decoration: none;
-  margin-left: 9%;
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: #666666;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  line-height: 1.5;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out;
-  /* display: flex; */
-}
-
-.nav__link:hover {
-  color: #3d3d3d;
-}
-.nav__link__sold {
+nav .title {
   margin: 1rem;
-  position: relative;
-  top: 0.9rem;
-  font-size: 1.2rem;
-  font-family: Helvetica;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
 }
-.nav__search {
-  position: relative;
-  top: 0.9rem;
-  height: 1.7rem;
-  border-radius: 5px;
-  border-color: #666666;
-  border: none;
-  text-align: left;
-  margin-left: 2rem;
-  /* margin-right: 3rem; */
+nav ul {
+  display: flex;
 }
-.nav__button {
-  padding: 6px 10px;
-  border: none;
-  background-color: #e3f2fd;
-  color: #666666;
+nav ul li {
+  list-style: none;
+}
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  border-radius: 0.5rem;
+}
+nav ul li a:not(.active):hover {
+  background-color: #172554;
+}
+nav .menu {
+  display: none;
   position: absolute;
-  margin-top: 1rem;
-  margin-right: 2rem;
+  top: 0e.75rem;
+  right: 0.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2.25rem;
+  height: 2rem;
+  /* display: none; */
 }
-.grid {
-  /* position: relative; */
-  display: grid;
-  /* grid-gap: 10px; */
+nav .menu span {
+  height: 0.4rem;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0.2rem;
 }
-
-/* you can remove the lines beside and make it a little padded or largin right because of small devices */
-@media only screen and (max-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 480px) {
+  nav .menu {
+    display: flex;
   }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+  nav {
+    flex-direction: column;
+    align-items: start;
   }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0.25rem;
   }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
+  nav ul.open{
+    display: flex;
   }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+  nav ul li a{
+    margin: 0.2rem 0.5rem;
   }
 }
