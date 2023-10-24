@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config();
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -37,26 +37,27 @@ const signupAuth = async (req, res, next) => {
       [name, email, password],
       (err, results) => {
         if (err) return res.send(err.message);
-        else return res.json("Success");
+        else return res.redirect("/login");
       }
     );
   } else {
     console.log("one of more fields are empty");
-    res.json("one or more fields are empty");
-    return;
+    return res.json("one or more fields are empty");
   }
   next();
 };
+
+
 
 const isAuth = async (req, res) => {
   if (!req.cookies.authToken) {
     return res.send("Not registered");
   } else res.send("User registered");
-  next()
+  next();
   // jwt.verify(req.cookies.authToken, PROCESS.ENV.JWT_SECRET);
   //   if !auth next if auth throw new error, user already logged in
-  next();
 };
+
 
 const loginAuth = async (req, res, next) => {
   // new jwt token
@@ -65,34 +66,58 @@ const loginAuth = async (req, res, next) => {
     let password = req.body.password;
     //check if req.cookies.authToken then try and check if its expired, if exp, revoke then continue. try the rotating token login
     //   jwt.verify(req.cookies.authToken, PROCESS.ENV.JWT_SECRET);
-
-      await pool.query(
-        "SELECT name, email, password FROM users where email=$1",
-        [email],
-        (err, results) => {
-          if (err) return res.json("Error querying db", err);
-          const user = results.rows;
-          console.log(password, user[0].password)
-          if (user[0].email === email){
-          //validate password
-          bcrypt.compare(password, user.password, async (err, result) => {
-            console.log(result)
-            
-            if(result) console.log("no error")
-            const payload = {
-              name: user.name,
-              email: user.email,
-              exp: (Date.now() / 1000) * 60 * 60 * 24 * 2, //2 days
-            };
-           const token = await jwt.sign(payload, process.env.JWT_SECRET);
-            return res.json(token);
-          });
-        }}
-      );
-    
+    if (!req.cookies.authToken) {
+      try {
+        await pool.query(
+          "SELECT name, email, password FROM users where email=$1",
+          [email],
+          (err, results) => {
+            if (err) return res.json("Error querying db", err);
+            const user = results.rows;
+            console.log(user);
+            if (user[0]) {
+              if (user[0].email === email) {
+                //validate password
+                bcrypt.compare(
+                  password,
+                  user[0].password,
+                  async (err, result) => {
+                    if (result) {
+                      console.log("no error");
+                      const payload = {
+                        name: user.name,
+                        email: user.email,
+                        exp: (Date.now() / 1000) * 60 * 60 * 24 * 2, //2 days
+                      };
+                      const token = await jwt.sign(
+                        payload,
+                        process.env.JWT_SECRET
+                      );
+                      res.cookie.authToken = token;
+                      console.log(res.cookie.authToken);
+                      return res.redirect("/");
+                    } else
+                      res.json({
+                        message: "passwords don't match",
+                      });
+                  }
+                );
+              }
+            }
+            else{
+              res.json("Invalid email or password")
+            }
+          }
+        );
+      } catch (error) {
+        res.json("Invalid Email or password");
+      }
+    } else {
+      res.json("User already logged in");
+    }
 
     next();
-  } else return res.json("Invalid email")
+  } else return res.json("Wrong input");
 };
 
 module.exports = { signupAuth, loginAuth, isAuth };
