@@ -1,10 +1,7 @@
-const express = require("express")
-const router = express.Router()
-require("dotenv").config()
-const {isAuth, loginAuth} = require("../middleware/auth")
-const getLoginInfo = require("../helpers/getLoginInfo")
-router.post("/", loginAuth, async(req, res)=>{
-    // const loginInfo = await getLoginInfo("token")
-    // res.json(loginInfo)
-})
-module.exports = router; 
+const express = require("express");
+const router = express.Router();
+require("dotenv").config();
+const { isAuth, loginAuth } = require("../middleware/auth");
+router.post("/", loginAuth, async (req, res) => {});
+module.exports = router;
+//to do: get frontend jokes and diss json
