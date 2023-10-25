@@ -1,5 +1,4 @@
 require("dotenv").config();
-const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const pool = require("../db");
@@ -47,17 +46,15 @@ const signupAuth = async (req, res, next) => {
   next();
 };
 
-
-
 const isAuth = async (req, res) => {
   if (!req.cookies.authToken) {
-    return res.send("Not registered");
-  } else res.send("User registered");
-  next();
-  // jwt.verify(req.cookies.authToken, PROCESS.ENV.JWT_SECRET);
+    return res.send("User Not Logged in");
+  } else {
+    res.send("User Logged in");
+  }
+  jwt.verify(req.cookies.authToken, PROCESS.ENV.JWT_SECRET);
   //   if !auth next if auth throw new error, user already logged in
 };
-
 
 const loginAuth = async (req, res, next) => {
   // new jwt token
@@ -103,9 +100,8 @@ const loginAuth = async (req, res, next) => {
                   }
                 );
               }
-            }
-            else{
-              res.json("Invalid email or password")
+            } else {
+              res.json("Invalid email or password");
             }
           }
         );
